@@ -8,15 +8,21 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var process = __importStar(require("child_process"));
-var fs = __importStar(require("fs"));
-var MAPLE_START_MESSAGE = fs.readFileSync("MAPLE_START_MESSAGE").toString();
+var MAPLE_START_MESSAGE = "    |\\^/|     Maple 2018 (IBM INTEL NT)\r\n._|\\|   |/|_. Copyright (c) Maplesoft, a division of Waterloo Maple Inc. 2018\r\n \\  MAPLE  /  All rights reserved. Maple is a trademark of\r\n <____ ____>  Waterloo Maple Inc.\r\n      |       Type ? for help.\r\n";
 var MapleEngine = /** @class */ (function () {
     function MapleEngine(pathToCMaple) {
-        var a = process.spawn(pathToCMaple);
-        a.stdout.on("data", function (data) {
-            console.log(data === MAPLE_START_MESSAGE);
+        var _this = this;
+        this.mapleProcess = process.spawn(pathToCMaple);
+        this.mapleProcess.stdout.on("data", function (data) {
+            if (data.toString() === MAPLE_START_MESSAGE) {
+                _this.mapleProcess.send("D(x->x^sin(x))");
+            }
+            console.log(data.toString());
         });
-        a.stderr.on("data", console.log);
+        this.mapleProcess.stderr.on("data", console.log);
+        this.mapleProcess.on("close", function (code, signal) {
+            console.log("maple process closed with code " + code);
+        });
     }
     return MapleEngine;
 }());
