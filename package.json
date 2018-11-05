@@ -7,13 +7,16 @@
     "maple-node-bindings": "./bin/main.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -r ts-node/register src/**/*.spec.ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cramt/maple-node-bindings.git"
   },
-  "keywords": ["maple", "mathematics"],
+  "keywords": [
+    "maple",
+    "mathematics"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -21,6 +24,14 @@
   },
   "homepage": "https://github.com/cramt/maple-node-bindings#readme",
   "dependencies": {
-    "@types/node": "^10.9.4"
+    "@types/node": "^10.9.4",
+    "typescript": "^3.1.6"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1"
   }
 }

@@ -31,7 +31,6 @@ export class MapleEngine {
                 this.clear()
             }
             if (data === MAPLE_START_MESSAGE) {
-                //this.mapleProcess.stdin.write("D(x->x^sin(x));\r\n")
                 this.active = true;
             }
 
