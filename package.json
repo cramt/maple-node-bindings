@@ -1,11 +1,9 @@
 {
   "name": "maple-node-bindings",
-  "version": "1.0.1",
-  "description": "",
-  "main": "./bin/main.js",
-  "bin": {
-    "maple-node-bindings": "./bin/main.js"
-  },
+  "version": "1.0.2",
+  "description": "bindings for maple",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "mocha -r ts-node/register src/**/*.spec.ts"
   },
@@ -17,7 +15,7 @@
     "maple",
     "mathematics"
   ],
-  "author": "",
+  "author": "Mads Østermark",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cramt/maple-node-bindings/issues"
